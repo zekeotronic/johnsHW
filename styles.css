@@ -1,0 +1,56 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #f4f4f4;
+  background-color: #333;
+}
+
+.container {
+  margin: 0 3%;
+}
+
+.container .container {
+  background-color: #484747;
+}
+
+.input-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  margin-bottom: 1rem;
+  padding-left: 0.75rem;
+}
+
+h2 {
+  margin-bottom: 0.5rem;
+  text-decoration: underline;
+}
+
+.input-row label {
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.input-row input {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  width: 150px;
+}
+
+.input-row button {
+  margin-top: 1rem;
+  width: 200px;
+}

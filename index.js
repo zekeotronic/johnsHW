@@ -52,9 +52,9 @@ function updateProblem() {
 }
 
 function updateAnswer() {
-  const radicand = elements.radicandInput.value;
-  const index = elements.indexInput.value;
-  const answer = simplifyRadical(radicand, index);
+  // const radicand = parseInt(elements.radicandInput.value);
+  // const index = parseInt(elements.indexInput.value);
+  const answer = simplifyRadical(+elements.radicandInput.value, +elements.indexInput.value);
   elements.answerBig.innerText = answer[0];
   elements.answerSup.innerText = answer[1];
   elements.answerSymbol.innerText = sqrtSymbol;
