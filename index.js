@@ -52,8 +52,8 @@ function updateProblem() {
 }
 
 function updateAnswer() {
-  const radicand = +elements.radicandInput.value;
-  const index = +elements.indexInput.value;
+  const radicand = elements.radicandInput.value;
+  const index = elements.indexInput.value;
   const answer = simplifyRadical(radicand, index);
   elements.answerBig.innerText = answer[0];
   elements.answerSup.innerText = answer[1];
