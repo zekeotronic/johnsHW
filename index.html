@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./index.js" defer></script>
+    <title>John's Homework</title>
+  </head>
+  <body>
+    <div id="main-container" class="container">
+      <h1>John's Homework</h1>
+      <div id="simplify-radicals" class="container">
+        <h2>Simplify Radicals</h2>
+        <div id="simplify-radicals-inputs" class="input-row">
+          <label for="radicand-input">Radicand</label>
+          <input name="radicand-input" id="radicand-input" type="number" />
+          <label for="index-input">Index</label>
+          <input name="index-input" id="index-input" type="number" />
+          <button id="simplify-radicals-button">Get Answer</button>
+        </div>
+        <div id="simplify-radicals-results" class="result-row">
+          <p id="simplify-radicals-problem">
+            <sup id="sup"></sup>
+            <span id="symbol"></span>
+            <span id="radicand"></span>
+          </p>
+          <div id="simplify-radicals-answer">
+            <p id="simplify-radicals-problem-answer">
+              Answer:
+              <span id="answer-big"></span>
+              <sup id="answer-sup"></sup>
+              <span id="answer-symbol"></span>
+              <span id="answer-radicand"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div id="decimal-to-fraction" class="container">
+        <h2>Decimal to Fraction</h2>
+        <div id="decimal-to-fraction-inputs" class="input-row">
+          <label for="decimal">Decimal</label>
+          <input type="number" name="decimal" id="decimal" />
+          <button id="decimal-to-fraction-button">Get Fraction</button>
+        </div>
+        <div id="decimal-to-fractions-results" class="results-row">
+          Answer:
+          <div class="fraction" id="fraction"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
