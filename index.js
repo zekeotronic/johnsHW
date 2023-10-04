@@ -1,34 +1,5 @@
 const sqrtSymbol = '√';
 
-function getFactors(number) {
-  const factors = [];
-  for (var i = 2; i < number; i++) {
-    if (number % i === 0) {
-      factors.push(i);
-    }
-  }
-  return factors;
-}
-
-function simplifyRadical(radicand, index) {
-  const radicandFactors = getFactors(radicand);
-  const commonFactors = radicandFactors.filter(function(factor) {
-    return Math.pow(factor, 1 / index) % 1 === 0;
-  });
-  let a = commonFactors[commonFactors.length - 1]
-  let b = Math.pow(a, 1 / index)
-  // return `${b} * ^${index}${sqrtSymbol}${radicand / a}`;
-
-  return[b, index, radicand / a]
-
-
-}
-
-// const answer = simplifyRadical(75, 2);
-// console.log("This is superscript $^2$");
-
-// console.log("Answer:", answer);
-
 const elements = {
   radicandInput: document.getElementById('radicand-input'),
   indexInput: document.getElementById('index-input'),
@@ -41,6 +12,37 @@ const elements = {
   answerSup: document.getElementById('answer-sup'),
   answerSymbol: document.getElementById('answer-symbol'),
   answerRadicand: document.getElementById('answer-radicand'),
+};
+
+/**
+ * Takes a number and returns an array of its factors
+ * @param {number} number
+ * @returns {number[]} Array of factors
+ */
+function getFactors(number) {
+  const factors = [];
+  for (let i = 2; i < number; i++) {
+    if (number % i === 0) {
+      factors.push(i);
+    }
+  }
+  return factors;
+}
+
+/** 
+ * Takes a radicand and index and returns the simplified radical
+ * @param {number} radicand
+ * @param {number} index
+ * @returns {number[]} Array containing the simplified radical
+*/
+function simplifyRadical(radicand, index) {
+  const radicandFactors = getFactors(radicand);
+  const commonFactors = radicandFactors.filter(function(factor) {
+    return Math.pow(factor, 1 / index) % 1 === 0;
+  });
+  let a = commonFactors[commonFactors.length - 1];
+  let b = Math.pow(a, 1 / index);
+  return[b, index, radicand / a];
 }
 
 function updateProblem() {
@@ -52,8 +54,6 @@ function updateProblem() {
 }
 
 function updateAnswer() {
-  // const radicand = parseInt(elements.radicandInput.value);
-  // const index = parseInt(elements.indexInput.value);
   const answer = simplifyRadical(+elements.radicandInput.value, +elements.indexInput.value);
   elements.answerBig.innerText = answer[0];
   elements.answerSup.innerText = answer[1];
@@ -75,18 +75,19 @@ elements.radicalsButton.addEventListener('click', function(e) {
   updateAnswer();
 })
 
-function decimalToFraction(e) {
-  e.preventDefault();
-  let decimal = document.getElementById('decimal').value;
-  let decimalLength = decimal.split('.')[1].length;
+function decimalToFraction(decimal) {
+  let decimalLength = String(decimal).split('.')[1].length;
   let denominator = Math.pow(10, decimalLength);
   let numerator = decimal * denominator;
   let gcd = function gcd(a, b) {
     return b ? gcd(b, a % b) : a;
   };
   gcd = gcd(numerator, denominator);
-  let fraction = numerator / gcd + "/" + denominator / gcd;
-  document.getElementById('fraction').innerText = fraction;
+  let fraction = `${numerator / gcd} / ${denominator / gcd}`;
+  return fraction;
 }
 
-document.getElementById('decimal-to-fraction-button').addEventListener('click', decimalToFraction);
+document.getElementById('decimal-to-fraction-button').addEventListener('click', (e) => {
+  e.preventDefault();
+  document.getElementById('fraction').innerText = decimalToFraction(document.getElementById('decimal').value);
+});
